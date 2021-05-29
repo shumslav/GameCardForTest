@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle" android:padding="10dp">
+        <corners
+            android:bottomRightRadius="3dp"
+            android:bottomLeftRadius="3dp"
+            android:topLeftRadius="3dp"
+            android:topRightRadius="3dp"/>
+            <size
+                android:width="40dp"
+                android:height="50dp"/>
+            <gradient
+                android:angle="0"
+                android:centerColor="#FFFFFF"
+                android:endColor="#756868"
+                android:startColor="#807474" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/airplane"/>
+</layer-list>
