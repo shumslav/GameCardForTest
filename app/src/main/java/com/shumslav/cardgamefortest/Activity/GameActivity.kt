@@ -10,11 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Size
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.setPadding
 import com.shumslav.cardgamefortest.Data.Models.Card
 import com.shumslav.cardgamefortest.Data.Models.SettingsApp
 import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
@@ -47,8 +49,8 @@ class GameActivity : AppCompatActivity() {
         textSteps= findViewById(R.id.countSteps)
         cardBoard = findViewById(R.id.cardBoard)
         settings= sqlHelper.getSettings()
-        dificult = settings.dificult.toInt()
-        volumeLevel = settings.volumeLevel.toInt()
+        dificult = settings.getDificult()
+        volumeLevel = settings.getVolumeLevel()
         imagesId = mutableListOf()
         makeToast(this, listOfImages.size.toString())
         val unusedImagesList = mutableListOf<Int>()
@@ -70,7 +72,8 @@ class GameActivity : AppCompatActivity() {
         if(!isCreated) {
             for (i in 0..(dificult*2/5)-1) {
                 val row = TableRow(this)
-                row.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                row.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                row.gravity = Gravity.CENTER
                 for (j in 0..4) {
                     countOfCard+=1
                     val card = makeCard(i,j)
@@ -96,6 +99,7 @@ class GameActivity : AppCompatActivity() {
         val cardWithImageView = ImageView(this)
         cardWithImageView.tag = imageId
         cardWithImageView.setImageDrawable(cardWithImage)
+        cardWithImageView.setPadding(7)
         val card = Card(cardWithImageView, Point(x,y))
         card.image.setOnClickListener {
             if (!card.isFind) {

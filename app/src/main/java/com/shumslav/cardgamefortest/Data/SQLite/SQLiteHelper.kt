@@ -31,8 +31,8 @@ class SQLiteHelper(val context: Context): SQLiteOpenHelper(context, DB_NAME,null
         db.close()
         db = this.writableDatabase
         val cv = ContentValues()
-        cv.put(SETTINGS_COL_DIFICULT, settings.dificult)
-        cv.put(SETTINGS_COL_VOLUME, settings.volumeLevel)
+        cv.put(SETTINGS_COL_DIFICULT, settings.getDificult().toString())
+        cv.put(SETTINGS_COL_VOLUME, settings.getVolumeLevel().toString())
         db.insert(TABLE_NAME_SETTINGS, null, cv)
     }
 
@@ -43,8 +43,8 @@ class SQLiteHelper(val context: Context): SQLiteOpenHelper(context, DB_NAME,null
         val result = db.rawQuery(query, null)
         if (result.moveToFirst()){
             do {
-                settings.dificult = result.getString(result.getColumnIndex(SETTINGS_COL_DIFICULT)).toString()
-                settings.volumeLevel = result.getString(result.getColumnIndex(SETTINGS_COL_VOLUME)).toString()
+                settings.setDificult(result.getString(result.getColumnIndex(SETTINGS_COL_DIFICULT)).toString())
+                settings.setVolumeLevel(result.getString(result.getColumnIndex(SETTINGS_COL_VOLUME)).toString())
             } while (result.moveToNext())
         }
         result.close()
