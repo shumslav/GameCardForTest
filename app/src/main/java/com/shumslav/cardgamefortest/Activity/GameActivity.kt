@@ -125,7 +125,8 @@ class GameActivity : AppCompatActivity() {
                                 secondCheckedCard = null
                                 countFound+=1
                                 if (countFound==dificult)
-                                    startActivity(Intent(this, MainActivity::class.java))
+                                    startActivity(Intent(this, WinActivity::class.java)
+                                        .putExtra("com.shumslav.cardgamefortest.Activity.score", steps))
                             } else {
                                 val transitionOtherCard = firstCheckedCard!!.image.drawable as TransitionDrawable
                                 transition.reverseTransition(1000)
