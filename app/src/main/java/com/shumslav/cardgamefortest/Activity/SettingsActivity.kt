@@ -32,8 +32,8 @@ class SettingsActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         settingsApp = sqlHelper.getSettings()
-        dificult = settingsApp.dificult.toInt()
-        volumeLevel = settingsApp.volumeLevel.toInt()
+        dificult = settingsApp.getDificult()
+        volumeLevel = settingsApp.getVolumeLevel()
         seekVolume.setProgress(volumeLevel)
 
         when(dificult){

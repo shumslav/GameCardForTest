@@ -26,5 +26,4 @@ class MainActivity : AppCompatActivity() {
         buttonSettings.setOnClickListener {
             startActivity(Intent(this,SettingsActivity::class.java))
         }
-    }
-}
+    }}
