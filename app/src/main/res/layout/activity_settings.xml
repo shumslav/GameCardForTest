@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SettingsActivity">
+
+
+    <LinearLayout
+        android:id="@+id/settings_dificult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/settings_dificult_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="Dificult:"/>
+
+        <Button
+            android:id="@+id/dificult_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 карт"
+            android:layout_gravity="center"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/dificult_ten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10 карт"
+            android:layout_gravity="center"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/dificult_fifteen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15 карт"
+            android:layout_gravity="center"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/settings_volume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_dificult">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volume:"
+            android:textSize="30sp" />
+
+        <SeekBar
+            android:id="@+id/seek_bar_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:progress="100" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

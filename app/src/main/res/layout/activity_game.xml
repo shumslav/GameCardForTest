@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Activity.GameActivity">
 
+    <TextView
+        android:id="@+id/countSteps"
+        android:layout_width="wrap_content"
+        android:text="0"
+        android:textSize="100sp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
     <LinearLayout
         android:id="@+id/game_layout"
         android:layout_width="match_parent"
@@ -14,7 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/countSteps"
         android:gravity="center">
 
         <TableLayout

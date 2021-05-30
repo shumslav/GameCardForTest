@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CardGameForTest">
-        <activity android:name=".Activity.GameActivity"></activity>
+        <activity android:name=".Activity.SettingsActivity"></activity>
+        <activity android:name=".Activity.GameActivity" />
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

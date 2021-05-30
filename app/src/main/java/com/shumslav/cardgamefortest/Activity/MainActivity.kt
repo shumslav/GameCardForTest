@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonSettings.setOnClickListener {
-            TODO()
+            startActivity(Intent(this,SettingsActivity::class.java))
         }
     }
 }

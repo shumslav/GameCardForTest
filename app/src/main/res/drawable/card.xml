@@ -9,8 +9,8 @@
             android:topLeftRadius="3dp"
             android:topRightRadius="3dp"/>
             <size
-                android:width="40dp"
-                android:height="50dp"/>
+                android:width="60dp"
+                android:height="70dp"/>
             <gradient
                 android:angle="0"
                 android:centerColor="#FFFFFF"
