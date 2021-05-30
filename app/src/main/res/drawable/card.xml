@@ -18,5 +18,4 @@
                 android:startColor="#807474" />
         </shape>
     </item>
-    <item android:drawable="@drawable/airplane"/>
 </layer-list>
