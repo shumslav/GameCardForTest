@@ -45,20 +45,15 @@
             android:gravity="center"
             android:textSize="30sp"
             android:layout_marginBottom="30dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Введите свое имя"
-            android:textSize="30sp"
-            android:gravity="center"
-            android:layout_marginBottom="20dp"/>
+
         <EditText
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:maxLength="20"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:hint="Введите свое имя"/>
 
 
     </LinearLayout>
