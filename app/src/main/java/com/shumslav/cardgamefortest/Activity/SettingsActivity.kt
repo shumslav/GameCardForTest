@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SeekBar
+import com.shumslav.cardgamefortest.Data.Firebase.resetSettingsFirebase
 import com.shumslav.cardgamefortest.Data.Models.SettingsApp
 import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
 import com.shumslav.cardgamefortest.R
@@ -11,6 +12,7 @@ import com.shumslav.cardgamefortest.R
 class SettingsActivity : AppCompatActivity() {
 
     private val sqlHelper = SQLiteHelper(this)
+    private val user = sqlHelper.getUser()
     private var dificult = 10
     private var volumeLevel = 100
 
@@ -71,6 +73,11 @@ class SettingsActivity : AppCompatActivity() {
     override fun onPause() {
         sqlHelper.insertSettings(SettingsApp(dificult.toString(), volumeLevel.toString()))
         super.onPause()
+    }
+
+    override fun onDestroy() {
+        resetSettingsFirebase(user.getLogin(),user.getSettings())
+        super.onDestroy()
     }
 
     fun setColorButtons(without:Button){
