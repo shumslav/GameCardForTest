@@ -13,11 +13,13 @@ class WinActivity : AppCompatActivity() {
 
     private val sqlHelper = SQLiteHelper(this)
     private var score = 0
+    private var time = 0
 
     lateinit var settings:SettingsApp
     lateinit var dificultText:TextView
     lateinit var scoreText:TextView
     lateinit var name:EditText
+    lateinit var timeText:TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,13 +30,17 @@ class WinActivity : AppCompatActivity() {
         dificultText = findViewById(R.id.dificult_text)
         scoreText= findViewById(R.id.score)
         name = findViewById(R.id.name)
-        score = intent.getIntExtra("com.shumslav.cardgamefortest.Activity.score",0)
-        scoreText.text = score.toString()
+        timeText = findViewById(R.id.time)
+
+        score = intent.getIntExtra("score", 0)
+        time = intent.getIntExtra("time", 0)
+        scoreText.text = "Шагов: ${score}"
         when(settings.getDificult()){
             5 -> dificultText.text = "Уровень сложности:\nЛегкий"
             10 -> dificultText.text = "Уровень сложности:\nСредний"
             15 -> dificultText.text = "Уровень сложности:\nСложный"
         }
+        timeText.text = ("Время: ${time/60}:${time%60}")
 
     }
 }

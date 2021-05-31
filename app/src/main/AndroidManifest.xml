@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CardGameForTest">
-        <activity android:name=".Activity.WinActivity"></activity>
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.CardGameForTest.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.WinActivity" />
         <activity android:name=".Activity.SettingsActivity" />
         <activity android:name=".Activity.GameActivity" />
         <activity android:name=".Activity.MainActivity">
