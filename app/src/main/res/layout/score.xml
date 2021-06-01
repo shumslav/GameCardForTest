@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="fill_horizontal"
-    android:layout_marginBottom="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:maxWidth="0dp">
 
     <TextView
         android:id="@+id/score_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
+        android:gravity="center"
         android:textSize="20sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"/>
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/score_steps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="steps"
+        android:text="Steps"
+        android:gravity="center"
         android:textSize="20sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"/>
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/score_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="time"
+        android:text="Time"
+        android:gravity="center"
         android:textSize="20sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"/>
+        android:layout_weight="1"/>
 
     <TextView
         android:id="@+id/score_dificult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dificult"
+        android:text="Dificult"
         android:textSize="20sp"
-        android:layout_gravity="end"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"/>
+        android:gravity="center"
+        android:layout_weight="1"/>
 
 </LinearLayout>

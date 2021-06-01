@@ -1,5 +1,6 @@
 package com.shumslav.cardgamefortest.Activity
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Point
@@ -29,7 +30,7 @@ import com.shumslav.cardgamefortest.listOfImages
 import com.shumslav.cardgamefortest.makeToast
 import java.util.*
 
-class GameActivity : AppCompatActivity() {
+class GameActivity : Activity() {
 
     private val sqlHelper = SQLiteHelper(this)
 

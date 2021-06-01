@@ -1,6 +1,7 @@
 package com.shumslav.cardgamefortest.Activity
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,7 +12,7 @@ import com.shumslav.cardgamefortest.Data.Models.SettingsApp
 import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
 import com.shumslav.cardgamefortest.R
 
-class WinActivity : AppCompatActivity() {
+class WinActivity : Activity() {
 
     private val sqlHelper = SQLiteHelper(this)
     private var score = 0

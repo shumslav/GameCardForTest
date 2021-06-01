@@ -5,11 +5,15 @@ class Score {
     private var time = "0:0"
     private var dificult = "10"
 
+
+
     constructor(steps: String, time: String, dificult: String) {
         this.steps = steps
         this.time = time
         this.dificult = dificult
     }
+
+    constructor()
 
     fun getSteps():String{
         return this.steps

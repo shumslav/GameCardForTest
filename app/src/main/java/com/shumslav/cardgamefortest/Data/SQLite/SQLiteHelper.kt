@@ -40,8 +40,8 @@ class SQLiteHelper(val context: Context): SQLiteOpenHelper(context, DB_NAME,null
 
         db = this.writableDatabase
         val cv = ContentValues()
-        cv.put(SETTINGS_COL_DIFICULT, settings.getDificult().toString())
-        cv.put(SETTINGS_COL_VOLUME, settings.getVolumeLevel().toString())
+        cv.put(SETTINGS_COL_DIFICULT, settings.getDificult())
+        cv.put(SETTINGS_COL_VOLUME, settings.getVolumeLevel())
         db.insert(TABLE_NAME_SETTINGS, null, cv)
         db.close()
     }

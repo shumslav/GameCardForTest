@@ -1,5 +1,6 @@
 package com.shumslav.cardgamefortest.Activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -14,7 +15,7 @@ import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
 import com.shumslav.cardgamefortest.R
 import com.shumslav.cardgamefortest.makeToast
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : Activity() {
     private lateinit var passwordText:EditText
     private lateinit var loginText:EditText
     private lateinit var nextButton:Button

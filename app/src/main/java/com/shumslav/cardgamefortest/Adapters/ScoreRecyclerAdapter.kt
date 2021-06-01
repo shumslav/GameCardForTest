@@ -5,10 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.shumslav.cardgamefortest.Data.Firebase.NODE_DIFICULT_EASY
+import com.shumslav.cardgamefortest.Data.Firebase.NODE_DIFICULT_HARD
+import com.shumslav.cardgamefortest.Data.Firebase.NODE_DIFICULT_MEDIUM
 import com.shumslav.cardgamefortest.Data.Models.Score
 import com.shumslav.cardgamefortest.R
 
-class ScoreRecyclerAdapter(private val scores: MutableList<Score?>, private val login:String) :
+class ScoreRecyclerAdapter(private val scores: MutableList<Score?>, private val login: String) :
     RecyclerView.Adapter<ScoreRecyclerAdapter.ScoreViewHolder>() {
 
     class ScoreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -33,7 +36,11 @@ class ScoreRecyclerAdapter(private val scores: MutableList<Score?>, private val 
     override fun onBindViewHolder(holder: ScoreViewHolder, position: Int) {
         if (scores[position] != null) {
             holder.scoreName.text = login
-            holder.scoreDificult.text = scores[position]!!.getDificult()
+            when (scores[position]!!.getDificult()) {
+                "5" -> holder.scoreDificult.text = NODE_DIFICULT_EASY
+                "10" -> holder.scoreDificult.text = NODE_DIFICULT_MEDIUM
+                "15" -> holder.scoreDificult.text = NODE_DIFICULT_HARD
+            }
             holder.scoreTime.text = scores[position]!!.getTime()
             holder.scoreSteps.text = scores[position]!!.getSteps()
         }
