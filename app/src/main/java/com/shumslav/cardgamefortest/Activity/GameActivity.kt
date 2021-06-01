@@ -19,7 +19,9 @@ import android.widget.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.setPadding
+import com.shumslav.cardgamefortest.Data.Firebase.addNewScoreFirebase
 import com.shumslav.cardgamefortest.Data.Models.Card
+import com.shumslav.cardgamefortest.Data.Models.Score
 import com.shumslav.cardgamefortest.Data.Models.SettingsApp
 import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
 import com.shumslav.cardgamefortest.R
@@ -135,9 +137,12 @@ class GameActivity : AppCompatActivity() {
                                 secondCheckedCard = null
                                 countFound += 1
                                 if (countFound == dificult) {
+                                    val time = (System.currentTimeMillis()- startTime)/1000
                                     mChronometer.stop()
+                                    val score = Score(steps.toString(),"${time/60}:${time%60}",dificult.toString())
+                                    addNewScoreFirebase(sqlHelper.getUser().getLogin(),score)
                                     val intent = Intent(this, WinActivity::class.java)
-                                    intent.putExtra("time", ((System.currentTimeMillis()- startTime)/1000).toInt())
+                                    intent.putExtra("time", (time).toInt())
                                     intent.putExtra("score", steps)
                                     startActivity(intent)
                                 }

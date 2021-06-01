@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="fill_horizontal"
+    android:layout_marginBottom="10dp">
+
+    <TextView
+        android:id="@+id/score_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <TextView
+        android:id="@+id/score_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="steps"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <TextView
+        android:id="@+id/score_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <TextView
+        android:id="@+id/score_dificult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dificult"
+        android:textSize="20sp"
+        android:layout_gravity="end"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+</LinearLayout>

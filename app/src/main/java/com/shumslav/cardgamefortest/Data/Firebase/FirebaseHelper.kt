@@ -7,6 +7,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.shumslav.cardgamefortest.Data.Firebase.Callbacks.CallbackForSettings
 import com.shumslav.cardgamefortest.Data.Firebase.Callbacks.CallbackForUser
+import com.shumslav.cardgamefortest.Data.Models.Score
 import com.shumslav.cardgamefortest.Data.Models.SettingsApp
 import com.shumslav.cardgamefortest.Data.Models.User
 import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
@@ -32,14 +33,18 @@ fun initFirebase() {
     REF_STORAGE_ROOT = FirebaseStorage.getInstance().reference
 }
 
-fun addNewScoreFirebase(login: String, score: String, dificult: Int) {
+fun addNewScoreFirebase(login: String, score:Score) {
     initFirebase()
-    var ref = REF_DATABASE_ROOT.child(NODE_SCORES).child(login).child(NODE_DIFICULT)
-    when (dificult) {
+    var ref = REF_DATABASE_ROOT.child(NODE_SCORES).child(login)
+    when (score.getDificult().toInt()) {
         5 -> ref = ref.child(NODE_DIFICULT_EASY)
         10 -> ref = ref.child(NODE_DIFICULT_MEDIUM)
         15 -> ref = ref.child(NODE_DIFICULT_HARD)
     }
+    ref.addListenerForSingleValueEvent(AppValueEventListener{
+        val id = it.children.count().toString()
+        ref.child(id).setValue(score)
+    })
 }
 
 fun addNewUserFirebase(user: User) {

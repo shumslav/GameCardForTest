@@ -1,8 +1,10 @@
 package com.shumslav.cardgamefortest.Activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.shumslav.cardgamefortest.Data.Models.SettingsApp
@@ -18,8 +20,8 @@ class WinActivity : AppCompatActivity() {
     lateinit var settings:SettingsApp
     lateinit var dificultText:TextView
     lateinit var scoreText:TextView
-    lateinit var name:EditText
     lateinit var timeText:TextView
+    lateinit var toMainButton:Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +31,14 @@ class WinActivity : AppCompatActivity() {
         settings = sqlHelper.getSettings()
         dificultText = findViewById(R.id.dificult_text)
         scoreText= findViewById(R.id.score)
-        name = findViewById(R.id.name)
         timeText = findViewById(R.id.time)
+        toMainButton = findViewById(R.id.button_to_main)
+
+
+
+        toMainButton.setOnClickListener {
+            startActivity(Intent(this,MainActivity::class.java))
+        }
 
         score = intent.getIntExtra("score", 0)
         time = intent.getIntExtra("time", 0)

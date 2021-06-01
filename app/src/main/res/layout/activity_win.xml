@@ -53,14 +53,13 @@
             android:textSize="30sp"
             android:layout_marginBottom="30dp"/>
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/button_to_main"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:maxLength="20"
-            android:gravity="center"
-            android:hint="Введите свое имя"/>
+            android:text="Main menu"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
 
 
     </LinearLayout>
