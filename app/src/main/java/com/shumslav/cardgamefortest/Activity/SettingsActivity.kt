@@ -1,18 +1,19 @@
 package com.shumslav.cardgamefortest.Activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SeekBar
 import com.shumslav.cardgamefortest.Data.Firebase.resetSettingsFirebase
 import com.shumslav.cardgamefortest.Data.Models.SettingsApp
+import com.shumslav.cardgamefortest.Data.Models.User
 import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
 import com.shumslav.cardgamefortest.R
 
 class SettingsActivity : AppCompatActivity() {
 
     private val sqlHelper = SQLiteHelper(this)
-    private val user = sqlHelper.getUser()
     private var dificult = 10
     private var volumeLevel = 100
 
@@ -21,6 +22,8 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var buttonTenCard:Button
     private lateinit var buttonFifteenCard:Button
     private lateinit var seekVolume:SeekBar
+    private lateinit var logoutButton: Button
+    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +32,13 @@ class SettingsActivity : AppCompatActivity() {
         buttonTenCard = findViewById(R.id.dificult_ten)
         buttonFifteenCard = findViewById(R.id.dificult_fifteen)
         seekVolume= findViewById(R.id.seek_bar_volume)
+        logoutButton = findViewById(R.id.logout)
+        user = sqlHelper.getUser()
+
+        logoutButton.setOnClickListener {
+            sqlHelper.deleteUserAndSettings()
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 
     override fun onResume() {
@@ -76,7 +86,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        resetSettingsFirebase(user.getLogin(),user.getSettings())
+        resetSettingsFirebase(user.getLogin(),sqlHelper.getSettings())
         super.onDestroy()
     }
 

@@ -91,5 +91,15 @@ class SQLiteHelper(val context: Context): SQLiteOpenHelper(context, DB_NAME,null
         return user
     }
 
+    fun deleteUserAndSettings(){
+        var db = this.writableDatabase
+        db.delete(TABLE_NAME_USER, null, null)
+        db.close()
+
+        db = this.writableDatabase
+        db.delete(TABLE_NAME_SETTINGS, null, null)
+        db.close()
+    }
+
 
 }
