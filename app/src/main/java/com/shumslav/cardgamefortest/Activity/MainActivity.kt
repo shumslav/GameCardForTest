@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         buttonGame = findViewById(R.id.button_game)
         buttonSettings = findViewById(R.id.button_settings)
         buttonScore = findViewById(R.id.button_score)
-
         buttonGame.setOnClickListener {
             startActivity(Intent(this,GameActivity::class.java))
         }

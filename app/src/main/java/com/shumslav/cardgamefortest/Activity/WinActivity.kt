@@ -35,7 +35,7 @@ class WinActivity : AppCompatActivity() {
         score = intent.getIntExtra("score", 0)
         time = intent.getIntExtra("time", 0)
         scoreText.text = "Шагов: ${score}"
-        when(settings.getDificult()){
+        when(settings.getDificult().toInt()){
             5 -> dificultText.text = "Уровень сложности:\nЛегкий"
             10 -> dificultText.text = "Уровень сложности:\nСредний"
             15 -> dificultText.text = "Уровень сложности:\nСложный"

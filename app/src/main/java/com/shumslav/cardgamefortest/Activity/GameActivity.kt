@@ -28,6 +28,9 @@ import com.shumslav.cardgamefortest.makeToast
 import java.util.*
 
 class GameActivity : AppCompatActivity() {
+
+    private val sqlHelper = SQLiteHelper(this)
+
     private var dificult = 10
     private var volumeLevel = 100
     private var isCreated = false
@@ -36,24 +39,22 @@ class GameActivity : AppCompatActivity() {
     private var steps = 0
     private var countFound = 0
     private var startTime:Long = 0
-    private val sqlHelper = SQLiteHelper(this)
     private var allCardOnBoard = mutableListOf<Card>()
 
     private lateinit var cardBoard: TableLayout
     private lateinit var textSteps: TextView
     private lateinit var imagesId: MutableList<Int>
-    private lateinit var settings: SettingsApp
     private lateinit var mChronometer: Chronometer
+    private lateinit var settings: SettingsApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
-
+        settings = sqlHelper.getSettings()
         textSteps = findViewById(R.id.countSteps)
         cardBoard = findViewById(R.id.cardBoard)
-        settings = sqlHelper.getSettings()
-        dificult = settings.getDificult()
-        volumeLevel = settings.getVolumeLevel()
+        dificult = settings.getDificult().toInt()
+        volumeLevel = settings.getVolumeLevel().toInt()
         imagesId = mutableListOf()
         mChronometer = findViewById(R.id.chronometer)
 

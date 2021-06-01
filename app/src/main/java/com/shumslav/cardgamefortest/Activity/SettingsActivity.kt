@@ -38,14 +38,15 @@ class SettingsActivity : AppCompatActivity() {
         logoutButton.setOnClickListener {
             sqlHelper.deleteUserAndSettings()
             startActivity(Intent(this, LoginActivity::class.java))
+            resetSettingsFirebase(user.getLogin(), SettingsApp(dificult.toString(), volumeLevel.toString()))
         }
     }
 
     override fun onResume() {
         super.onResume()
         settingsApp = sqlHelper.getSettings()
-        dificult = settingsApp.getDificult()
-        volumeLevel = settingsApp.getVolumeLevel()
+        dificult = settingsApp.getDificult().toInt()
+        volumeLevel = settingsApp.getVolumeLevel().toInt()
         seekVolume.setProgress(volumeLevel)
 
         when(dificult){

@@ -11,8 +11,8 @@ class SettingsApp{
         this.volumeLevel = volumeLevel
     }
 
-    fun getDificult():Int{
-        return this.dificult.toInt()
+    fun getDificult():String{
+        return this.dificult
     }
 
     fun setDificult(dificult: String){
@@ -23,8 +23,8 @@ class SettingsApp{
         this.volumeLevel = volumeLevel
     }
 
-    fun getVolumeLevel():Int{
-        return this.volumeLevel.toInt()
+    fun getVolumeLevel():String{
+        return this.volumeLevel
     }
 
 
