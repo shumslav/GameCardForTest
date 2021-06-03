@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CardGameForTest">
-        <activity android:name=".Activity.YandexActivity"></activity>
-        <activity android:name=".Activity.WebActivity" />
+        <activity
+            android:name=".Activity.YandexActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".Activity.YouTubeActivity"
+            android:configChanges="orientation|screenSize" />
         <activity android:name=".Activity.ScoreActivity" />
         <activity
             android:name=".Activity.LoginActivity"

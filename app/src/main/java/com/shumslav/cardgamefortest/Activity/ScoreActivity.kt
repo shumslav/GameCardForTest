@@ -37,13 +37,13 @@ class ScoreActivity : Activity() {
             AppValueEventListener {
                 val scores = mutableListOf<Score?>()
                 if (it.hasChild(NODE_DIFICULT_EASY)){
-                    val easy = it.child(NODE_DIFICULT_EASY).children.map { scores.add(it.getValue(Score::class.java)) }
+                    it.child(NODE_DIFICULT_EASY).children.map { scores.add(it.getValue(Score::class.java)) }
                 }
                 if (it.hasChild(NODE_DIFICULT_MEDIUM)){
-                    val medium = it.child(NODE_DIFICULT_MEDIUM).children.map { scores.add(it.getValue(Score::class.java)) }
+                    it.child(NODE_DIFICULT_MEDIUM).children.map { scores.add(it.getValue(Score::class.java)) }
                 }
                 if (it.hasChild(NODE_DIFICULT_HARD)){
-                    val hard = it.child(NODE_DIFICULT_HARD).children.map { scores.add(it.getValue(Score::class.java)) }
+                    it.child(NODE_DIFICULT_HARD).children.map { scores.add(it.getValue(Score::class.java)) }
                 }
                 recyclerView.adapter = ScoreRecyclerAdapter(scores, user.getLogin())
             }
