@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CardGameForTest">
-        <activity android:name=".Activity.ScoreActivity"></activity>
+        <activity android:name=".Activity.YandexActivity"></activity>
+        <activity android:name=".Activity.WebActivity" />
+        <activity android:name=".Activity.ScoreActivity" />
         <activity
             android:name=".Activity.LoginActivity"
             android:label="@string/title_activity_login"

@@ -12,6 +12,7 @@ class MainActivity : Activity() {
     private lateinit var buttonGame: Button
     private lateinit var buttonSettings: Button
     private lateinit var buttonScore: Button
+    private lateinit var buttonYouTube: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,8 @@ class MainActivity : Activity() {
         buttonGame = findViewById(R.id.button_game)
         buttonSettings = findViewById(R.id.button_settings)
         buttonScore = findViewById(R.id.button_score)
+        buttonYouTube = findViewById(R.id.button_web)
+
 
         buttonGame.setOnClickListener {
             startActivity(Intent(this,GameActivity::class.java))
@@ -32,4 +35,10 @@ class MainActivity : Activity() {
         buttonScore.setOnClickListener {
             startActivity(Intent(this, ScoreActivity::class.java))
         }
+
+        buttonYouTube.setOnClickListener {
+            startActivity(Intent(this, YouTubeActivity::class.java))
+        }
+
+
     }}
