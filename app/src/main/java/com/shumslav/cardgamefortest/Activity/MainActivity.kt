@@ -5,8 +5,12 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.shumslav.cardgamefortest.R
+import com.shumslav.cardgamefortest.makeToast
 
 class MainActivity : Activity() {
     private lateinit var buttonGame: Button
@@ -24,6 +28,19 @@ class MainActivity : Activity() {
         buttonScore = findViewById(R.id.button_score)
         buttonYouTube = findViewById(R.id.button_web)
         buttonYandex = findViewById(R.id.button_web_yandex)
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                makeToast(this, "can't take")
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            makeToast(this,token!!)
+        })
 
 
         buttonGame.setOnClickListener {

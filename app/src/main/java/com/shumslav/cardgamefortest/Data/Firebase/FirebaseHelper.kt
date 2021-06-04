@@ -1,6 +1,7 @@
 package com.shumslav.cardgamefortest.Data.Firebase
 
 import android.content.Context
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
@@ -31,6 +32,7 @@ fun initFirebase() {
     AUTH = FirebaseAuth.getInstance()
     REF_DATABASE_ROOT = FirebaseDatabase.getInstance().reference
     REF_STORAGE_ROOT = FirebaseStorage.getInstance().reference
+
 }
 
 fun addNewScoreFirebase(login: String, score:Score) {

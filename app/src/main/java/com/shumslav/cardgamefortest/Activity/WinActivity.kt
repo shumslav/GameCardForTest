@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.shumslav.cardgamefortest.Data.Models.SettingsApp
 import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
 import com.shumslav.cardgamefortest.R
@@ -23,6 +24,7 @@ class WinActivity : Activity() {
     lateinit var scoreText:TextView
     lateinit var timeText:TextView
     lateinit var toMainButton:Button
+    lateinit var mFirebaseAnalitics: FirebaseAnalytics
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,11 @@ class WinActivity : Activity() {
         scoreText= findViewById(R.id.score)
         timeText = findViewById(R.id.time)
         toMainButton = findViewById(R.id.button_to_main)
+        mFirebaseAnalitics = FirebaseAnalytics.getInstance(this)
+
+        var bundle = Bundle()
+        bundle.putInt("key", 69)
+        mFirebaseAnalitics.logEvent("name",bundle)
 
 
 

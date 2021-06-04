@@ -44,7 +44,7 @@ class LoginActivity : Activity() {
                             if (user!!.getPassword()==password){
                                 insertUserFromFirebaseToSQLite(this,login)
                                 insertSettingsFromFirebaseToSQLite(this,login)
-                                makeToast(this,"Login")
+//                                makeToast(this,"Login")
                                 startActivity(Intent(this,MainActivity::class.java))
                             }
                             else{
