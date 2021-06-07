@@ -21,6 +21,10 @@ val listOfImages = mutableListOf(
     R.drawable.hand
 )
 
+val defaults = mapOf(
+    "key" to ""
+)
+
 fun makeToast(context: Context, string: String) {
     Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
 }

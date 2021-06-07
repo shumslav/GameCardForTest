@@ -32,6 +32,9 @@ android {
         jvmTarget = '1.8'
     }
 }
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -46,6 +49,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
     implementation 'com.google.firebase:firebase-firestore:23.0.1'
+    implementation 'com.google.firebase:firebase-config:21.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -54,5 +58,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
-    //add
+    //add Appsflyer
+    implementation 'com.appsflyer:af-android-sdk:6.2.3'
 }
