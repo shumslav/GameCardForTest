@@ -60,4 +60,5 @@ dependencies {
 
     //add Appsflyer
     implementation 'com.appsflyer:af-android-sdk:6.2.3'
+    implementation 'com.android.installreferrer:installreferrer:2.2'
 }

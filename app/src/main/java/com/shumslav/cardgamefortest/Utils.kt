@@ -28,3 +28,9 @@ val defaults = mapOf(
 fun makeToast(context: Context, string: String) {
     Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
 }
+
+fun insertBetween(string: String, inputString: String, from:String,to:String):String{
+    val partsString = string.split(from)
+    var result = partsString.first()+from+inputString+to+partsString.last().split(to).last()
+    return result
+}

@@ -4,15 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.shumslav.cardgamefortest.R
 import com.shumslav.cardgamefortest.defaults
 import com.shumslav.cardgamefortest.makeToast
 import java.nio.charset.StandardCharsets
 
+
+
 class LoadScreen : AppCompatActivity() {
 
     lateinit var remoteConfig:FirebaseRemoteConfig
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_load_screen)
@@ -24,9 +28,9 @@ class LoadScreen : AppCompatActivity() {
             val intent = Intent(this, YandexActivity::class.java)
             val result = remoteConfig.getString("key")
             if (!result.isNullOrEmpty()) {
+                Log.i("Base64", result)
                 val data = Base64.decode(result, Base64.DEFAULT)
                 val text = String(data, StandardCharsets.UTF_8)
-                makeToast(this, result)
                 intent.putExtra("key", text)
                 startActivity(intent)
             }
