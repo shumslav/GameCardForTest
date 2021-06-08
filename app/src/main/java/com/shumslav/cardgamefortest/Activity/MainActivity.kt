@@ -11,8 +11,12 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.shumslav.cardgamefortest.Data.Firebase.REF_DATABASE_ROOT
 import com.shumslav.cardgamefortest.Data.Firebase.initFirebase
+import com.shumslav.cardgamefortest.Data.Models.PersonalUrl
+import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
 import com.shumslav.cardgamefortest.R
 import com.shumslav.cardgamefortest.makeToast
+import org.jsoup.Jsoup
+import kotlin.concurrent.thread
 
 class MainActivity : Activity() {
     private lateinit var buttonGame: Button
@@ -20,6 +24,8 @@ class MainActivity : Activity() {
     private lateinit var buttonScore: Button
     private lateinit var buttonYouTube: Button
     private lateinit var buttonYandex: Button
+    private lateinit var sqLiteHelper: SQLiteHelper
+    private lateinit var personalUrl: PersonalUrl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +36,11 @@ class MainActivity : Activity() {
         buttonScore = findViewById(R.id.button_score)
         buttonYouTube = findViewById(R.id.button_web)
         buttonYandex = findViewById(R.id.button_web_yandex)
+        sqLiteHelper = SQLiteHelper(this)
+        personalUrl = sqLiteHelper.getPersonalUrl()
+        Log.i("PersonalUclick", personalUrl.getUclick())
+        Log.i("PersonalUrl", personalUrl.getUclickUrl())
+
 
         buttonGame.setOnClickListener {
             startActivity(Intent(this,GameActivity::class.java))

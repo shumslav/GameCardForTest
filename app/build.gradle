@@ -61,4 +61,10 @@ dependencies {
     //add Appsflyer
     implementation 'com.appsflyer:af-android-sdk:6.2.3'
     implementation 'com.android.installreferrer:installreferrer:2.2'
+
+    //add Jsoup
+    implementation 'org.jsoup:jsoup:1.13.1'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.0'
+    implementation 'com.beust:klaxon:5.5'
 }

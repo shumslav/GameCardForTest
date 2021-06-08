@@ -135,7 +135,7 @@ class SQLiteHelper(val context: Context): SQLiteOpenHelper(context, DB_NAME,null
 
     fun getPersonalUrl():PersonalUrl{
         val db = this.readableDatabase
-        val query = "Select * from $TABLE_NAME_USER"
+        val query = "Select * from $TABLE_NAME_PERSONAL_URL"
         val result = db.rawQuery(query, null)
         if (result.moveToFirst()){
             val uclick = result.getString(result.getColumnIndex(PERSONAL_URL_COL_UCLICK)).toString()
