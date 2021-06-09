@@ -32,8 +32,10 @@ class YandexActivity : AppCompatActivity() {
     private lateinit var cookieManager: CookieManager
     private lateinit var sqLiteHelper: SQLiteHelper
     private lateinit var context: Context
+    private lateinit var personalUrl: PersonalUrl
+    private lateinit var timer: CountDownTimer
 
-    private var key = defaults.get("key")
+    private var key = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,53 +43,89 @@ class YandexActivity : AppCompatActivity() {
 
         context = this
         webView = findViewById(R.id.web_view_yandex)
-        key = intent.getStringExtra("key") as String
-        webView.loadUrl(key!!)
+        key = intent.getStringExtra("key")!!
+        webView.loadUrl(key)
         remoteConfig = FirebaseRemoteConfig.getInstance()
         cookieManager = CookieManager.getInstance()
         sqLiteHelper = SQLiteHelper(this)
+        personalUrl = sqLiteHelper.getPersonalUrl()
+        timer = object : CountDownTimer(10000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+            }
 
+            override fun onFinish() {
+                Log.i("Check", "StartCheck")
+                Log.i("StatusReg", personalUrl.getStatusReg())
+                Log.i("StatusPurchase", personalUrl.getStatusPurchase())
+                if (!checkStatus(context, personalUrl)) {
+                    timer.start()
+                    Log.d("Status", "NothingFind")
+                } else {
+                    personalUrl = sqLiteHelper.getPersonalUrl()
+                    if (!personalUrl.getStatusPurchase().toBoolean())
+                        timer.start()
+                    else
+                        timer.cancel()
+                }
+            }
+        }
 
         webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+            override fun shouldOverrideUrlLoading(
+                view: WebView?,
+                request: WebResourceRequest?
+            ): Boolean {
                 cookieManager.flush()
                 return super.shouldOverrideUrlLoading(view, request)
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 cookieManager.flush()
-                Log.i("Cookie", key!!)
-                val cookies = cookieManager.getCookie(key)
-                Log.i("Cookie", cookies)
-                for (cookie in cookies.split(";")) {
-                    if (cookie.contains("uclick=")) {
-                        clickValue = cookie.split("=")[1]
-                        personalJsonUrl = insertBetween(
-                            remoteConfig.getString("url"),
-                            clickValue,
-                            "*****",
-                            "***"
-                        )
-                        break
-                    }
-                }
-                val personalUrl = sqLiteHelper.getPersonalUrl()
-                if (personalUrl.getUclick().isEmpty() || personalUrl.getUclickUrl().isEmpty()){
-                    sqLiteHelper.insertPersonalUrl(PersonalUrl(clickValue, personalJsonUrl))
-                }
-                else {
-                    thread {
-                        while (true) {
-                            if (checkStatus(personalUrl.getUclickUrl())) {
-                                break
-                            } else {
-                                Log.i("Timer", "false")
-                            }
-                            Thread.sleep(5000)
+                if (personalUrl.getUclick().isEmpty() || personalUrl.getUclickUrl().isEmpty()) {
+                    val cookies = cookieManager.getCookie(key)
+                    Log.i("Cookie", cookies)
+                    for (cookie in cookies.split(";")) {
+                        if (cookie.contains("uclick=")) {
+                            clickValue = cookie.split("=")[1]
+                            personalJsonUrl = insertBetween(
+                                remoteConfig.getString("url"),
+                                clickValue,
+                                "*****",
+                                "***"
+                            )
+                            break
                         }
                     }
+                    sqLiteHelper.insertPersonalUrl(
+                        PersonalUrl(
+                            clickValue,
+                            personalJsonUrl,
+                            "false",
+                            "false"
+                        )
+                    )
+                    personalUrl = PersonalUrl(clickValue, personalJsonUrl, "false", "false")
+                }
+                Log.d("Uclick", personalUrl.getUclick())
+                Log.d("UclickURL", personalUrl.getUclickUrl())
+                if (!personalUrl.getStatusPurchase().toBoolean()) {
+                    if (!checkStatus(context, personalUrl)) {
+                        Log.d("Status", "NothingFind")
+                        timer.start()
+                    } else {
+                        personalUrl = sqLiteHelper.getPersonalUrl()
+                        if (!personalUrl.getStatusPurchase().toBoolean())
+                            timer.start()
+                    }
+                } else {
+                    Log.d("Status_purchase", "Find")
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        timer.cancel()
+        super.onDestroy()
     }
 }

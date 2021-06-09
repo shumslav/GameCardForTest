@@ -23,6 +23,8 @@ val USER_COL_PASSWORD = "Password"
 
 val PERSONAL_URL_COL_UCLICK = "Uclick"
 val PERSONAL_URL_COL_PERSONAL_JSON_URL = "PersonalJsonUrl"
+val PERSONAL_URL_COL_STATUS_REG = "StatusReg"
+val PERSONAL_URL_COL_STATUS_PURCHASE = "Purchase"
 
 
 
@@ -44,6 +46,8 @@ class SQLiteHelper(val context: Context): SQLiteOpenHelper(context, DB_NAME,null
 
         val createTablePersonalUrl = "CREATE TABLE " + TABLE_NAME_PERSONAL_URL + " (" +
                 PERSONAL_URL_COL_UCLICK + " VARCHAR(256), " +
+                PERSONAL_URL_COL_STATUS_PURCHASE + " VARCHAR(256), " +
+                PERSONAL_URL_COL_STATUS_REG + " VARCHAR(256), " +
                 PERSONAL_URL_COL_PERSONAL_JSON_URL + " VARCHAR(256))"
         db?.execSQL(createTablePersonalUrl)
     }
@@ -129,6 +133,8 @@ class SQLiteHelper(val context: Context): SQLiteOpenHelper(context, DB_NAME,null
         val cv = ContentValues()
         cv.put(PERSONAL_URL_COL_UCLICK, personalUrl.getUclick())
         cv.put(PERSONAL_URL_COL_PERSONAL_JSON_URL, personalUrl.getUclickUrl())
+        cv.put(PERSONAL_URL_COL_STATUS_PURCHASE, personalUrl.getStatusPurchase())
+        cv.put(PERSONAL_URL_COL_STATUS_REG, personalUrl.getStatusReg())
         db.insert(TABLE_NAME_PERSONAL_URL, null, cv)
         db.close()
     }
@@ -140,12 +146,14 @@ class SQLiteHelper(val context: Context): SQLiteOpenHelper(context, DB_NAME,null
         if (result.moveToFirst()){
             val uclick = result.getString(result.getColumnIndex(PERSONAL_URL_COL_UCLICK)).toString()
             val personalJsonUrl = result.getString(result.getColumnIndex(PERSONAL_URL_COL_PERSONAL_JSON_URL)).toString()
-            val personalUrl = PersonalUrl(uclick, personalJsonUrl)
+            val statusPurchase = result.getString(result.getColumnIndex(PERSONAL_URL_COL_STATUS_PURCHASE)).toString()
+            val statusReg = result.getString(result.getColumnIndex(PERSONAL_URL_COL_STATUS_REG)).toString()
+            val personalUrl = PersonalUrl(uclick, personalJsonUrl,statusReg, statusPurchase)
             result.close()
             db.close()
             return personalUrl
         }
-        return PersonalUrl("","")
+        return PersonalUrl("","", "false", "false")
     }
 
 
