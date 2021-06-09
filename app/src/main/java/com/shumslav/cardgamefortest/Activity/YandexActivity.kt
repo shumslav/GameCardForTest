@@ -46,7 +46,7 @@ class YandexActivity : AppCompatActivity() {
 
     val INPUT_FILE_REQUEST_CODE = 1
     private var key = ""
-    private var mFilePathCallback: ValueCallback<Array<Uri>>? = null
+    private var mFilePathCallback: ValueCallback<Array<Uri?>>? = null
     private var mCameraPhotoPath: String? = null
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -159,7 +159,7 @@ class YandexActivity : AppCompatActivity() {
         webView.webChromeClient = object : WebChromeClient() {
             override fun onShowFileChooser(
                 webView: WebView?,
-                filePathCallback: ValueCallback<Array<Uri>>?,
+                filePathCallback: ValueCallback<Array<Uri?>>?,
                 fileChooserParams: FileChooserParams?
             ): Boolean {
                 mFilePathCallback?.onReceiveValue(null)
@@ -221,6 +221,32 @@ class YandexActivity : AppCompatActivity() {
     override fun onDestroy() {
         timer.cancel()
         super.onDestroy()
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        if (requestCode != INPUT_FILE_REQUEST_CODE || mFilePathCallback == null) {
+            super.onActivityResult(requestCode, resultCode, intent)
+            return
+        }
+
+        var results: Array<Uri?>? = null
+        // Check that the response is a good one
+        if (resultCode == RESULT_OK) {
+            if (intent == null) {
+                // If there is not data, then we may have taken a photo
+                if (mCameraPhotoPath != null) {
+                    results = arrayOf(Uri.parse(mCameraPhotoPath))
+                }
+            } else {
+                val dataString: String? = intent.dataString
+                if (dataString != null) {
+                    results = arrayOf(Uri.parse(dataString))
+                }
+            }
+        }
+
+        mFilePathCallback!!.onReceiveValue(results)
+        mFilePathCallback = null
+        return
     }
 
     override fun onBackPressed() {
