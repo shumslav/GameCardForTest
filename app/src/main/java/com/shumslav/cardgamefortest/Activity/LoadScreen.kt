@@ -27,6 +27,7 @@ class LoadScreen : AppCompatActivity() {
         remoteConfig.fetchAndActivate().addOnSuccessListener {
             val intent = Intent(this, YandexActivity::class.java)
             val result = remoteConfig.getString("key")
+            Log.i("key", result)
             if (result.isNotEmpty()) {
                 Log.i("Base64", result)
                 val data = Base64.decode(result, Base64.DEFAULT)
