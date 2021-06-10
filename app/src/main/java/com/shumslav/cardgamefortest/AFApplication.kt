@@ -5,11 +5,13 @@ import android.util.Log
 import com.appsflyer.AppsFlyerLib
 import com.appsflyer.AppsFlyerConversionListener
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.onesignal.OneSignal
 
 class AFApplication: Application() {
     companion object {
-        private val AF_DEV_KEY = "euG25HRdy99WGJ4DJuejom"
+        private val AF_DEV_KEY = "MKdgX4DJhRU5cEhbo6mrrL"
         private val LOG_TAG = "TAG"
+        private val ONESIGNAL_APP_ID = "37a57f74-f4af-4fa4-baa4-7c6d98220514"
     }
 
     override fun onCreate() {
@@ -37,5 +39,10 @@ class AFApplication: Application() {
         }
         AppsFlyerLib.getInstance().init(AF_DEV_KEY, conversionListener, this)
         AppsFlyerLib.getInstance().start(this)
+
+
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
+        OneSignal.initWithContext(this)
+        OneSignal.setAppId(ONESIGNAL_APP_ID)
     }
 }

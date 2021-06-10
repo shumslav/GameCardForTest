@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1040093603670",
-    "project_id": "cardgame-2ad61",
-    "storage_bucket": "cardgame-2ad61.appspot.com"
+    "project_number": "965446148668",
+    "project_id": "sick-game-of-pmsports",
+    "storage_bucket": "sick-game-of-pmsports.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1040093603670:android:587b8df94d724a7b84d8f7",
+        "mobilesdk_app_id": "1:965446148668:android:6275c752a8d03e138d1939",
         "android_client_info": {
           "package_name": "com.sigufyndufi.finfangam"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1040093603670-q9df1pem0sbpd2ueflihmae547edjf16.apps.googleusercontent.com",
+          "client_id": "965446148668-ov6c996bqkag4jui5ocvu1ep2oogp4ej.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD6z2vrSHSrYmucmBH48tAPLMURPqfcxvw"
+          "current_key": "AIzaSyD9PNAOVYG_QFYFrTb8spiAVrO1o2n-nWc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1040093603670-q9df1pem0sbpd2ueflihmae547edjf16.apps.googleusercontent.com",
+              "client_id": "965446148668-ov6c996bqkag4jui5ocvu1ep2oogp4ej.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

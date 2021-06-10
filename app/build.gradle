@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 }
 
 android {
@@ -65,6 +66,10 @@ dependencies {
     //add Jsoup
     implementation 'org.jsoup:jsoup:1.13.1'
 
+    //add jacson/klaxon
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.0'
     implementation 'com.beust:klaxon:5.5'
+
+    //add OneSignal
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 }
