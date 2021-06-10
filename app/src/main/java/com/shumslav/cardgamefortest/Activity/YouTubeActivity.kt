@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Activity
+package com.sigufyndufi.finfangam.Activity
 
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +8,8 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.FrameLayout
-import com.shumslav.cardgamefortest.R
-import com.shumslav.cardgamefortest.makeToast
+import com.sigufyndufi.finfangam.R
+import com.sigufyndufi.finfangam.makeToast
 
 class YouTubeActivity : AppCompatActivity() {
 

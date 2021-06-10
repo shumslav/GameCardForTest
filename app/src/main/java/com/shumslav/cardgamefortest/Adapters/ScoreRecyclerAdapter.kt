@@ -1,15 +1,15 @@
-package com.shumslav.cardgamefortest.Adapters
+package com.sigufyndufi.finfangam.Adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.shumslav.cardgamefortest.Data.Firebase.NODE_DIFICULT_EASY
-import com.shumslav.cardgamefortest.Data.Firebase.NODE_DIFICULT_HARD
-import com.shumslav.cardgamefortest.Data.Firebase.NODE_DIFICULT_MEDIUM
-import com.shumslav.cardgamefortest.Data.Models.Score
-import com.shumslav.cardgamefortest.R
+import com.sigufyndufi.finfangam.Data.Firebase.NODE_DIFICULT_EASY
+import com.sigufyndufi.finfangam.Data.Firebase.NODE_DIFICULT_HARD
+import com.sigufyndufi.finfangam.Data.Firebase.NODE_DIFICULT_MEDIUM
+import com.sigufyndufi.finfangam.Data.Models.Score
+import com.sigufyndufi.finfangam.R
 
 class ScoreRecyclerAdapter(private val scores: MutableList<Score?>, private val login: String) :
     RecyclerView.Adapter<ScoreRecyclerAdapter.ScoreViewHolder>() {

@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Data.Models
+package com.sigufyndufi.finfangam.Data.Models
 
 class SettingsApp{
     private var dificult = "10"

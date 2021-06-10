@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Data.Models
+package com.sigufyndufi.finfangam.Data.Models
 
 import android.graphics.Point
 import android.widget.ImageView

@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Activity
+package com.sigufyndufi.finfangam.Activity
 
 import android.app.Activity
 import android.content.Intent
@@ -8,12 +8,12 @@ import android.widget.EditText
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import com.shumslav.cardgamefortest.Data.Firebase.*
-import com.shumslav.cardgamefortest.Data.Models.SettingsApp
-import com.shumslav.cardgamefortest.Data.Models.User
-import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
-import com.shumslav.cardgamefortest.R
-import com.shumslav.cardgamefortest.makeToast
+import com.sigufyndufi.finfangam.Data.Firebase.*
+import com.sigufyndufi.finfangam.Data.Models.SettingsApp
+import com.sigufyndufi.finfangam.Data.Models.User
+import com.sigufyndufi.finfangam.Data.SQLite.SQLiteHelper
+import com.sigufyndufi.finfangam.R
+import com.sigufyndufi.finfangam.makeToast
 
 class LoginActivity : Activity() {
     private lateinit var passwordText:EditText

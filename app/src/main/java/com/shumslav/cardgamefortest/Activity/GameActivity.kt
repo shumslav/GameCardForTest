@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Activity
+package com.sigufyndufi.finfangam.Activity
 
 import android.app.Activity
 import android.content.Intent
@@ -20,14 +20,14 @@ import android.widget.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.setPadding
-import com.shumslav.cardgamefortest.Data.Firebase.addNewScoreFirebase
-import com.shumslav.cardgamefortest.Data.Models.Card
-import com.shumslav.cardgamefortest.Data.Models.Score
-import com.shumslav.cardgamefortest.Data.Models.SettingsApp
-import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
-import com.shumslav.cardgamefortest.R
-import com.shumslav.cardgamefortest.listOfImages
-import com.shumslav.cardgamefortest.makeToast
+import com.sigufyndufi.finfangam.Data.Firebase.addNewScoreFirebase
+import com.sigufyndufi.finfangam.Data.Models.Card
+import com.sigufyndufi.finfangam.Data.Models.Score
+import com.sigufyndufi.finfangam.Data.Models.SettingsApp
+import com.sigufyndufi.finfangam.Data.SQLite.SQLiteHelper
+import com.sigufyndufi.finfangam.R
+import com.sigufyndufi.finfangam.listOfImages
+import com.sigufyndufi.finfangam.makeToast
 import java.util.*
 
 class GameActivity : Activity() {

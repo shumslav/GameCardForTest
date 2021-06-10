@@ -1,32 +1,30 @@
-package com.shumslav.cardgamefortest.Activity
+package com.sigufyndufi.finfangam.Activity
 
 import android.annotation.SuppressLint
 import android.app.DownloadManager
 import android.content.Context
+import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.webkit.*
-import android.widget.Chronometer
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.shumslav.cardgamefortest.*
-import com.shumslav.cardgamefortest.Data.Models.PersonalUrl
-import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
-import kotlinx.coroutines.GlobalScope
+import com.sigufyndufi.finfangam.*
+import com.sigufyndufi.finfangam.Data.Models.PersonalUrl
+import com.sigufyndufi.finfangam.Data.SQLite.SQLiteHelper
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.concurrent.thread
-import kotlin.jvm.Throws
-import kotlin.math.log
 import kotlin.system.exitProcess
 
 class YandexActivity : AppCompatActivity() {
@@ -56,6 +54,7 @@ class YandexActivity : AppCompatActivity() {
 
         context = this
         webView = findViewById(R.id.web_view_yandex)
+        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
         key = intent.getStringExtra("key")!!
         webView.settings.apply {
             this.javaScriptEnabled = true
@@ -68,7 +67,7 @@ class YandexActivity : AppCompatActivity() {
         cookieManager = CookieManager.getInstance()
         sqLiteHelper = SQLiteHelper(this)
         personalUrl = sqLiteHelper.getPersonalUrl()
-        timer = object : CountDownTimer(10000, 1000) {
+        timer = object : CountDownTimer(time_to_check_status, 1000) {
             override fun onTick(millisUntilFinished: Long) {
             }
 
@@ -103,8 +102,10 @@ class YandexActivity : AppCompatActivity() {
         }
 
 
+
         webView.loadUrl(key)
         webView.webViewClient = object : WebViewClient() {
+            var progressDialog: ProgressDialog? = null
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
                 request: WebResourceRequest?
@@ -139,6 +140,15 @@ class YandexActivity : AppCompatActivity() {
                         )
                     )
                     personalUrl = PersonalUrl(clickValue, personalJsonUrl, "false", "false")
+                    try {
+                        // Close progressDialog
+                        if (progressDialog!!.isShowing()) {
+                            progressDialog!!.dismiss()
+                            progressDialog = null
+                        }
+                    } catch (exception: Exception) {
+                        exception.printStackTrace()
+                    }
                 }
                 Log.d("Uclick", personalUrl.getUclick())
                 Log.d("UclickURL", personalUrl.getUclickUrl())
@@ -155,6 +165,7 @@ class YandexActivity : AppCompatActivity() {
                     Log.d("Status_purchase", "Find")
                 }
             }
+
         }
         webView.webChromeClient = object : WebChromeClient() {
             override fun onShowFileChooser(
@@ -190,8 +201,7 @@ class YandexActivity : AppCompatActivity() {
                 val contentSelectionIntent = Intent(Intent.ACTION_GET_CONTENT)
                 contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE)
                 contentSelectionIntent.type = "image/*"
-                val intentArray: Array<Intent?> =
-                    takePictureIntent?.let { arrayOf(it) } ?: arrayOfNulls(0)
+                val intentArray: Array<Intent?> = takePictureIntent?.let { arrayOf(it) } ?: arrayOfNulls(0)
                 val chooserIntent = Intent(Intent.ACTION_CHOOSER)
                 chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent)
                 chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser")
@@ -208,9 +218,8 @@ class YandexActivity : AppCompatActivity() {
         // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val imageFileName = "JPEG_" + timeStamp + "_"
-        val storageDir = Environment.getExternalStoragePublicDirectory(
-            Environment.DIRECTORY_PICTURES
-        )
+        val storageDir =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
             imageFileName,  /* prefix */
             ".jpg",  /* suffix */
@@ -222,6 +231,7 @@ class YandexActivity : AppCompatActivity() {
         timer.cancel()
         super.onDestroy()
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         if (requestCode != INPUT_FILE_REQUEST_CODE || mFilePathCallback == null) {
             super.onActivityResult(requestCode, resultCode, intent)

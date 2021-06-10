@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Activity
+package com.sigufyndufi.finfangam.Activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -9,12 +9,12 @@ import android.util.Log
 import android.widget.Button
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
-import com.shumslav.cardgamefortest.Data.Firebase.REF_DATABASE_ROOT
-import com.shumslav.cardgamefortest.Data.Firebase.initFirebase
-import com.shumslav.cardgamefortest.Data.Models.PersonalUrl
-import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
-import com.shumslav.cardgamefortest.R
-import com.shumslav.cardgamefortest.makeToast
+import com.sigufyndufi.finfangam.Data.Firebase.REF_DATABASE_ROOT
+import com.sigufyndufi.finfangam.Data.Firebase.initFirebase
+import com.sigufyndufi.finfangam.Data.Models.PersonalUrl
+import com.sigufyndufi.finfangam.Data.SQLite.SQLiteHelper
+import com.sigufyndufi.finfangam.R
+import com.sigufyndufi.finfangam.makeToast
 import org.jsoup.Jsoup
 import kotlin.concurrent.thread
 

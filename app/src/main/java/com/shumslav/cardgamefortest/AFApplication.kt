@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest
+package com.sigufyndufi.finfangam
 
 import android.app.Application
 import android.util.Log

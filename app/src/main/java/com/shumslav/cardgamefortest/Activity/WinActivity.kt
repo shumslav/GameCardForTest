@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Activity
+package com.sigufyndufi.finfangam.Activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -9,9 +9,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.shumslav.cardgamefortest.Data.Models.SettingsApp
-import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
-import com.shumslav.cardgamefortest.R
+import com.sigufyndufi.finfangam.Data.Models.SettingsApp
+import com.sigufyndufi.finfangam.Data.SQLite.SQLiteHelper
+import com.sigufyndufi.finfangam.R
 
 class WinActivity : Activity() {
 

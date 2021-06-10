@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Activity
+package com.sigufyndufi.finfangam.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.shumslav.cardgamefortest.*
-import com.shumslav.cardgamefortest.Data.Models.PersonalUrl
-import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
+import com.sigufyndufi.finfangam.*
+import com.sigufyndufi.finfangam.Data.Models.PersonalUrl
+import com.sigufyndufi.finfangam.Data.SQLite.SQLiteHelper
 import java.nio.charset.StandardCharsets
 
 

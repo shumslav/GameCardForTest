@@ -1,12 +1,12 @@
-package com.shumslav.cardgamefortest.Data.SQLite
+package com.sigufyndufi.finfangam.Data.SQLite
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.shumslav.cardgamefortest.Data.Models.PersonalUrl
-import com.shumslav.cardgamefortest.Data.Models.SettingsApp
-import com.shumslav.cardgamefortest.Data.Models.User
+import com.sigufyndufi.finfangam.Data.Models.PersonalUrl
+import com.sigufyndufi.finfangam.Data.Models.SettingsApp
+import com.sigufyndufi.finfangam.Data.Models.User
 
 
 val DB_NAME = "CardGame"

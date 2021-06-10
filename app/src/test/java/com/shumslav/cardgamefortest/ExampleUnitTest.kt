@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest
+package com.sigufyndufi.finfangam
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Activity
+package com.sigufyndufi.finfangam.Activity
 
 import android.app.Activity
 import android.content.Intent
@@ -8,12 +8,12 @@ import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.shumslav.cardgamefortest.Adapters.ScoreRecyclerAdapter
-import com.shumslav.cardgamefortest.Data.Firebase.*
-import com.shumslav.cardgamefortest.Data.Models.Score
-import com.shumslav.cardgamefortest.Data.Models.User
-import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
-import com.shumslav.cardgamefortest.R
+import com.sigufyndufi.finfangam.Adapters.ScoreRecyclerAdapter
+import com.sigufyndufi.finfangam.Data.Firebase.*
+import com.sigufyndufi.finfangam.Data.Models.Score
+import com.sigufyndufi.finfangam.Data.Models.User
+import com.sigufyndufi.finfangam.Data.SQLite.SQLiteHelper
+import com.sigufyndufi.finfangam.R
 
 class ScoreActivity : Activity() {
     private lateinit var recyclerView: RecyclerView

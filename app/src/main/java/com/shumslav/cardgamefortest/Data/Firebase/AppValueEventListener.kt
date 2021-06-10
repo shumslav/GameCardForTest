@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Data.Firebase
+package com.sigufyndufi.finfangam.Data.Firebase
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

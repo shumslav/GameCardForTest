@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Data.Models
+package com.sigufyndufi.finfangam.Data.Models
 
 class PersonalUrl(private val uclick:String, private val uclickUrl:String,
                   private val status_reg:String, private val status_purchase: String){

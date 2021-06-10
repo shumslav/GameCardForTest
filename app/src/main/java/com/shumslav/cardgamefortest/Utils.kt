@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest
+package com.sigufyndufi.finfangam
 
 import android.content.Context
 import android.util.Log
@@ -10,8 +10,8 @@ import kotlin.concurrent.thread
 import com.appsflyer.AFInAppEventParameterName
 import com.appsflyer.AFInAppEventType
 import com.appsflyer.AppsFlyerLib
-import com.shumslav.cardgamefortest.Data.Models.PersonalUrl
-import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
+import com.sigufyndufi.finfangam.Data.Models.PersonalUrl
+import com.sigufyndufi.finfangam.Data.SQLite.SQLiteHelper
 
 val listOfImages = mutableListOf(
     R.drawable.airplane,
@@ -38,6 +38,7 @@ val defaults = mapOf(
 
 val af_complete_registration = listOf("registration", "reg", "new", "lead")
 val af_purchase = listOf("sale", "approved")
+val time_to_check_status:Long = 60*3*1000
 
 
 fun makeToast(context: Context, string: String) {

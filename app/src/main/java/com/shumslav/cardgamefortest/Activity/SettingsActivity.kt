@@ -1,4 +1,4 @@
-package com.shumslav.cardgamefortest.Activity
+package com.sigufyndufi.finfangam.Activity
 
 import android.app.Activity
 import android.content.Intent
@@ -6,11 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SeekBar
-import com.shumslav.cardgamefortest.Data.Firebase.resetSettingsFirebase
-import com.shumslav.cardgamefortest.Data.Models.SettingsApp
-import com.shumslav.cardgamefortest.Data.Models.User
-import com.shumslav.cardgamefortest.Data.SQLite.SQLiteHelper
-import com.shumslav.cardgamefortest.R
+import com.sigufyndufi.finfangam.Data.Firebase.resetSettingsFirebase
+import com.sigufyndufi.finfangam.Data.Models.SettingsApp
+import com.sigufyndufi.finfangam.Data.Models.User
+import com.sigufyndufi.finfangam.Data.SQLite.SQLiteHelper
+import com.sigufyndufi.finfangam.R
 
 class SettingsActivity : Activity() {
 
